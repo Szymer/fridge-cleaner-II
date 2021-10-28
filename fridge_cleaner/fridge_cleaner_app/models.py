@@ -1,5 +1,14 @@
 from django.db import models
 
+def create_Ingridient_dict():
+    ingredients = Ingredient.objects.all()
+    all_ingredients_names = []
+    for ingredient in ingredients:
+        all_ingredients_names.append((ingredient.pk, ingredient.name))
+
+    return all_ingredients_names
+
+
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=128, unique=True)
