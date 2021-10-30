@@ -1,10 +1,11 @@
 from django import forms
 
-from fridge_cleaner_app.models import create_Ingridient_dict
+
+from fridge_cleaner_app.models import Ingredient
 
 
 class SelectIngridientForm(forms.Form):
-    name = forms.ChoiceField(choices=create_Ingridient_dict(), widget=forms.SelectMultiple)
+    name = forms.ModelMultipleChoiceField(queryset=Ingredient.objects.all())
 
 
 
