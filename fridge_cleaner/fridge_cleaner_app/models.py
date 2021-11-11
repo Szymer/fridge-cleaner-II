@@ -2,8 +2,6 @@ from django.db import models
 
 
 
-
-
 class Ingredient(models.Model):
     name = models.CharField(max_length=128, unique=True)
     typ = models.ForeignKey("IngredientTyp", on_delete=models.CASCADE)
@@ -12,13 +10,13 @@ class Ingredient(models.Model):
 
 
 class IngredientTyp(models.Model):
-    name = models.CharField(max_lengthgit commit=128, unique=True)
+    name = models.CharField(max_length=128, unique=True)
 
 
 class Recipe(models.Model):
     name = models.CharField(max_length=516)
     source = models.ForeignKey("SourceSite", on_delete=models.CASCADE)
-    ingredient = models.ManyToManyField("Ingredient") #liczba mnoga
+    ingredients = models.ManyToManyField("Ingredient") #liczba mnoga
     rating = models.FloatField(null=True)
 
 

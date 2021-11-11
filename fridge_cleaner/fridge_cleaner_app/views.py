@@ -9,7 +9,7 @@ from fridge_cleaner_app.models import Recipe
 
 def search_recipes(form):
 
-    recipes = Recipe.objects.filter(ingredient__in=form.cleaned_data["name"]) #zminic name na ingridients
+    recipes = Recipe.objects.filter(ingredients__in=form.cleaned_data["ingridients"]) #zminic name na ingridients
     return recipes
 
 
