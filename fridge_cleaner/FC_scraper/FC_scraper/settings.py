@@ -75,6 +75,7 @@ ROBOTSTXT_OBEY = True
 ITEM_PIPELINES = {
    'FC_scraper.pipelines.FcScraperPipeline': 300,
    'FC_scraper.pipelines.IngredientTypPipeline': 800,
+   'FC_scraper.pipelines.IngredientPipeline': 800,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

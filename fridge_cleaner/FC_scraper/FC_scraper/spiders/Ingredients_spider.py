@@ -1,7 +1,7 @@
 import scrapy
 
-
-from FC_scraper.FC_scraper.items import IngredientTypItem
+from FC_scraper.FC_scraper.items import IngredientTypItem, IngredientItem
+from fridge_cleaner_app.models import typs_from_db, typs_pk
 
 
 class IngredientTypSpider(scrapy.Spider):
@@ -9,17 +9,29 @@ class IngredientTypSpider(scrapy.Spider):
     start_urls = ['http://przepisy.pl/skladniki/', ]
 
     def parse(self, response):
-
         for ingrid in response.css('a.category-tile'):
             item = IngredientTypItem()
             item['name'] = ingrid.css('h2.ng-star-inserted::text').extract_first()
             item.save()
             yield item
 
-            # yield {
-            #     'ingridientTypName': ingrid.css('h2.ng-star-inserted::text').get(),
-            #     'link_to_ingirdtyp': ingrid.css('a.category-tile::attr(href)').get(),
-            # }
+
+class IngredientSpider(scrapy.Spider):
+    name = 'ingredient'
+    typs = typs_from_db()
+    urls = []
+    for typ in typs:
+        urls.append(f'http://przepisy.pl/skladniki/{typ.name.lower()}')
+
+    start_urls = urls
+
+    def parse(self, response):
+        item = IngredientItem()
+        item['typ'] = typs_pk(response.css('li.span.ng-star-inserted::text').extract_first())
+        for ingrid in response.css('a.category-tile'):
+            item['name'] = ingrid.css('h2.ng-star-inserted::text').extract_first()
+            item.save()
+            yield item
 
 
 class RecipesSpider(scrapy.Spider):

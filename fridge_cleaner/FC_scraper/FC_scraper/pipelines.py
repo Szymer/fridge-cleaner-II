@@ -17,3 +17,9 @@ class IngredientTypPipeline(object):
     def proces_item(self, item, spider):
         item.save()
         return item
+
+
+class IngredientPipeline(object):
+    def proces_item(self, item, spider):
+        item.save()
+        return item

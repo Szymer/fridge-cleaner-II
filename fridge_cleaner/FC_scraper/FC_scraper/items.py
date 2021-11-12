@@ -6,7 +6,7 @@
 import scrapy
 from scrapy_djangoitem import DjangoItem
 # from scrapy.contrib.djangoitem import DjangoItem
-from fridge_cleaner_app.models import Recipe, IngredientTyp
+from fridge_cleaner_app.models import Recipe, IngredientTyp, Ingredient
 
 
 class FcScraperItem(scrapy.Item):
@@ -22,3 +22,7 @@ class RecipeItem(DjangoItem):
 
 class IngredientTypItem(DjangoItem):
     django_model = IngredientTyp
+
+
+class IngredientItem(DjangoItem):
+    django_model = Ingredient
