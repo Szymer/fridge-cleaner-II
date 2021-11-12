@@ -28,15 +28,15 @@ class IngredientTyp(models.Model):
 
 class Recipe(models.Model):
     name = models.CharField(max_length=516)
-    source = models.ForeignKey("SourceSite", on_delete=models.CASCADE)
-    ingredients = models.ManyToManyField("Ingredient")  # liczba mnoga
-    rating = models.FloatField(null=True)
+    source = models.URLField()
+    ingredients = models.ManyToManyField("Ingredient")
+    url = models.URLField(unique=True, default=None )
+    tags = models.ManyToManyField("tags")
+
+
+class Tags(models.Model):
+    tag_name = models.CharField(max_length=256, unique=True)
 
 
 class RecipeType(models.Model):
     typ_name = models.CharField(max_length=56, unique=True)
-
-
-class SourceSite(models.Model):
-    name = models.CharField(max_length=128, unique=True)
-    url = models.URLField()

@@ -7,6 +7,8 @@
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
 
+from fridge_cleaner_app.models import IngredientTyp
+
 
 class FcScraperPipeline:
     def process_item(self, item, spider):
@@ -21,5 +23,6 @@ class IngredientTypPipeline(object):
 
 class IngredientPipeline(object):
     def proces_item(self, item, spider):
+
         item.save()
         return item
