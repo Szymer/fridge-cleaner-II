@@ -16,9 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from fridge_cleaner_app.views import SelectIngridientView
+from fridge_cleaner_app.views import SelectIngridientView, RecipeDeatilView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', SelectIngridientView.as_view(), name="select"),
+    path('home/recipe4you/<int:recipe_pk>', RecipeDeatilView.as_view(), name="recipe4you")
 ]

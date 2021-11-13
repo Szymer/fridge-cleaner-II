@@ -1,0 +1,20 @@
+{% include "base.html" %}
+
+{% block content %}
+
+    <p> przepisy.pl/{{url}} </p>
+<h1>Składniki</h1>
+
+    {% for ing in ings%}
+    <ul>
+          <li>{{ing}}</li>
+    </ul>
+ {% endfor %}
+
+ <h4> cos tu bedzie jak mnie odblikuja <h4>
+
+{%endblock content  %}
+
+{% block footer %}
+
+{% endblock footer %}

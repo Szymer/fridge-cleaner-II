@@ -18,12 +18,14 @@ def ingredients_str_list():
         resoult.append(ingredient.name)
     return resoult
 
+
 def tag_str_list():
     tags = Tag.objects.all()
     resoult = []
     for tag in tags:
         resoult.append(tag.name)
     return resoult
+
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=128, unique=True)

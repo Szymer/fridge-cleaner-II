@@ -1,1 +1,1 @@
-find your recipr
+find your recipe
