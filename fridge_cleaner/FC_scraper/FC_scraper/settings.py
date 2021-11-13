@@ -76,6 +76,9 @@ ITEM_PIPELINES = {
    'FC_scraper.pipelines.FcScraperPipeline': 300,
    'FC_scraper.pipelines.IngredientTypPipeline': 800,
    'FC_scraper.pipelines.IngredientPipeline': 800,
+   'FC_scraper.pipelines.RecipePipeline': 800,
+   'FC_scraper.pipelines.TagPipeline': 800,
+   'FC_scraper.pipelines.TestPipeline': 800,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

@@ -1,12 +1,7 @@
-# Define here the models for your scraped items
-#
-# See documentation in:
-# https://docs.scrapy.org/en/latest/topics/items.html
-
 import scrapy
 from scrapy_djangoitem import DjangoItem
-# from scrapy.contrib.djangoitem import DjangoItem
-from fridge_cleaner_app.models import Recipe, IngredientTyp, Ingredient
+
+from fridge_cleaner_app.models import Recipe, IngredientTyp, Ingredient, Tag
 
 
 class FcScraperItem(scrapy.Item):
@@ -17,7 +12,6 @@ class FcScraperItem(scrapy.Item):
 
 class RecipeItem(DjangoItem):
     django_model = Recipe
-    name = scrapy.Field(defoult="no name")
 
 
 class IngredientTypItem(DjangoItem):
@@ -26,3 +20,12 @@ class IngredientTypItem(DjangoItem):
 
 class IngredientItem(DjangoItem):
     django_model = Ingredient
+
+
+class TagItem(DjangoItem):
+    django_model = Tag
+
+
+class AddIngToRecipe(scrapy.Item):
+    ingredient = scrapy.Field()
+    title = scrapy.Field()
